@@ -12,7 +12,8 @@ class MunkasController extends Controller
      */
     public function index()
     {
-        //
+        $munkas = Munkas::all();
+        return response()->json($munkas, 200, options:JSON_UNESCAPED_UNICODE);
     }
 
     /**
