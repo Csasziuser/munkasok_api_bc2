@@ -12,7 +12,8 @@ class KijelolesController extends Controller
      */
     public function index()
     {
-        //
+        $data = Kijeloles::with('munkas')->get();
+        return response()->json($data,200,options:JSON_UNESCAPED_UNICODE);
     }
 
     /**
