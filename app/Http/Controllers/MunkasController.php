@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use GuzzleHttp\Psr7\Message;
 use Illuminate\Http\Request;
 use App\Models\Munkas;
 
@@ -55,7 +56,15 @@ class MunkasController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $idhelye= Munkas::find($id);
+
+        if (!$idhelye) {
+            return response()->json(["message"=>"Nem található munkás"]);
+        }
+        $idhelye->update([
+            "available"=>$request->available
+        ]);
+        return response()->json(["message"=>"munkás frissítve"]);
     }
 
     /**

@@ -11,7 +11,7 @@ Route::get('/user', function (Request $request) {
 
 Route::get('munkasok', [MunkasController::class, "index"]);
 Route::post('munkasok', [MunkasController::class, "store"]);
-Route::put('munkasok', [MunkasController::class, "update"]);
+Route::put('munkasok/{id}', [MunkasController::class, "update"]);
 
 Route::get('kijelolesek', [KijelolesController::class, "index"]);
 Route::post('kijelolesek', [KijelolesController::class, "store"]);

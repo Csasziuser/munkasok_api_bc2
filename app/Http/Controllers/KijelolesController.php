@@ -19,7 +19,15 @@ class KijelolesController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validateddata = $request->validate([
+            "munkas_id"=>"required|integer|exists:munkasok,id",
+            "task_name"=>"required|string"
+        ],[
+            "required"=>":attribute kötelező mező",
+            "integer"=>":attribute szám mező",
+            "string"=>":attribute szöveg mező",
+            "exists"=>"létező munkás kell"
+        ]);
     }
 
     /**
