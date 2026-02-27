@@ -14,6 +14,8 @@ return new class extends Migration
         Schema::create('kijelolesek', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
+            $table->foreignId("munkas_id")->constrained("munkasok","id");
+            $table->string("task_name");
         });
     }
 
