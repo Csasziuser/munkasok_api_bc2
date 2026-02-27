@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Kijeloles;
 use Illuminate\Http\Request;
 
 class KijelolesController extends Controller
@@ -27,7 +28,13 @@ class KijelolesController extends Controller
             "integer"=>":attribute szám mező",
             "string"=>":attribute szöveg mező",
             "exists"=>"létező munkás kell"
+        ],[
+            "munkas_id" => "munkás azonosító",
+            "task_name" => "feladat név"
         ]);
+
+        Kijeloles::create($validateddata);
+        return response()->json("Feladat kiadva", 201, options:JSON_UNESCAPED_UNICODE);
     }
 
     /**
