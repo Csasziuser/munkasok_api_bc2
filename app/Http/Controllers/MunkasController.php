@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Munkas;
 
 class MunkasController extends Controller
 {
@@ -19,7 +20,22 @@ class MunkasController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validateddata = $request->validate([
+            "name" => "required|string|min:1|max:25",
+            "phone" => "required|string|min:1",
+            "available" => "required|integer|max:1"
+        ],[
+            "required" => ":attribute kotelezo mezo",
+            "string" => ":attribute szoveges mezo",
+            "integer"=> ":attribute szam mezo",
+            "min" => ":attribute nak ennyi a minimuma: :min",
+            "max" => ":attribute nak ennyi a maximumja: :max",
+            "available.max" => ":attribute nak ennyi a maximuma: :max",
+        ],[
+            "name" => "név",
+            "phone"=> "telefonszám",
+            "available" => "elerhetőség"
+        ]);
     }
 
     /**
