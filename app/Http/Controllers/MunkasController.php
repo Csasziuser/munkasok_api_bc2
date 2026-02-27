@@ -23,7 +23,7 @@ class MunkasController extends Controller
         $validateddata = $request->validate([
             "name" => "required|string|min:1|max:25",
             "phone" => "required|string|min:1",
-            "available" => "required|integer|max:1"
+            "available" => "integer|max:1"
         ],[
             "required" => ":attribute kotelezo mezo",
             "string" => ":attribute szoveges mezo",
@@ -36,6 +36,9 @@ class MunkasController extends Controller
             "phone"=> "telefonszám",
             "available" => "elerhetőség"
         ]);
+
+        Munkas::create($validateddata);
+        return response()->json("Rögzítve", 201, options:JSON_UNESCAPED_UNICODE);
     }
 
     /**
